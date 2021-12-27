@@ -30,18 +30,18 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.cubeSpecularCB = new System.Windows.Forms.CheckBox();
+            this.cubeSpecCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.downWallSpecularCB = new System.Windows.Forms.CheckBox();
-            this.sphereSpecularCB = new System.Windows.Forms.CheckBox();
-            this.upWallSpecularCB = new System.Windows.Forms.CheckBox();
-            this.rightWallSpecularCB = new System.Windows.Forms.CheckBox();
-            this.frontWallSpecularCB = new System.Windows.Forms.CheckBox();
-            this.leftWallSpecularCB = new System.Windows.Forms.CheckBox();
-            this.backWallSpecularCB = new System.Windows.Forms.CheckBox();
+            this.downWallSpecCheckBox = new System.Windows.Forms.CheckBox();
+            this.sphereSpecCheckBox = new System.Windows.Forms.CheckBox();
+            this.upWallSpecCheckBox = new System.Windows.Forms.CheckBox();
+            this.rightWallSpecCheckBox = new System.Windows.Forms.CheckBox();
+            this.frontWallSpecCheckBox = new System.Windows.Forms.CheckBox();
+            this.leftWallSpecCheckBox = new System.Windows.Forms.CheckBox();
+            this.backWallSpecCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.refractSphereCB = new System.Windows.Forms.CheckBox();
-            this.refractCubeCB = new System.Windows.Forms.CheckBox();
+            this.sphereRefCheckBox = new System.Windows.Forms.CheckBox();
+            this.cubeRefCheckBox = new System.Windows.Forms.CheckBox();
             this.twoLightsCB = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -73,27 +73,27 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // cubeSpecularCB
+            // cubeSpecCheckBox
             // 
-            this.cubeSpecularCB.AutoSize = true;
-            this.cubeSpecularCB.Location = new System.Drawing.Point(8, 23);
-            this.cubeSpecularCB.Margin = new System.Windows.Forms.Padding(4);
-            this.cubeSpecularCB.Name = "cubeSpecularCB";
-            this.cubeSpecularCB.Size = new System.Drawing.Size(63, 21);
-            this.cubeSpecularCB.TabIndex = 2;
-            this.cubeSpecularCB.Text = "Cube";
-            this.cubeSpecularCB.UseVisualStyleBackColor = true;
+            this.cubeSpecCheckBox.AutoSize = true;
+            this.cubeSpecCheckBox.Location = new System.Drawing.Point(8, 23);
+            this.cubeSpecCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.cubeSpecCheckBox.Name = "cubeSpecCheckBox";
+            this.cubeSpecCheckBox.Size = new System.Drawing.Size(63, 21);
+            this.cubeSpecCheckBox.TabIndex = 2;
+            this.cubeSpecCheckBox.Text = "Cube";
+            this.cubeSpecCheckBox.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.downWallSpecularCB);
-            this.groupBox1.Controls.Add(this.sphereSpecularCB);
-            this.groupBox1.Controls.Add(this.upWallSpecularCB);
-            this.groupBox1.Controls.Add(this.cubeSpecularCB);
-            this.groupBox1.Controls.Add(this.rightWallSpecularCB);
-            this.groupBox1.Controls.Add(this.frontWallSpecularCB);
-            this.groupBox1.Controls.Add(this.leftWallSpecularCB);
-            this.groupBox1.Controls.Add(this.backWallSpecularCB);
+            this.groupBox1.Controls.Add(this.downWallSpecCheckBox);
+            this.groupBox1.Controls.Add(this.sphereSpecCheckBox);
+            this.groupBox1.Controls.Add(this.upWallSpecCheckBox);
+            this.groupBox1.Controls.Add(this.cubeSpecCheckBox);
+            this.groupBox1.Controls.Add(this.rightWallSpecCheckBox);
+            this.groupBox1.Controls.Add(this.frontWallSpecCheckBox);
+            this.groupBox1.Controls.Add(this.leftWallSpecCheckBox);
+            this.groupBox1.Controls.Add(this.backWallSpecCheckBox);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
@@ -103,87 +103,87 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Specularity";
             // 
-            // downWallSpecularCB
+            // downWallSpecCheckBox
             // 
-            this.downWallSpecularCB.AutoSize = true;
-            this.downWallSpecularCB.Location = new System.Drawing.Point(8, 222);
-            this.downWallSpecularCB.Margin = new System.Windows.Forms.Padding(4);
-            this.downWallSpecularCB.Name = "downWallSpecularCB";
-            this.downWallSpecularCB.Size = new System.Drawing.Size(62, 21);
-            this.downWallSpecularCB.TabIndex = 0;
-            this.downWallSpecularCB.Text = "Floor";
-            this.downWallSpecularCB.UseVisualStyleBackColor = true;
+            this.downWallSpecCheckBox.AutoSize = true;
+            this.downWallSpecCheckBox.Location = new System.Drawing.Point(8, 222);
+            this.downWallSpecCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.downWallSpecCheckBox.Name = "downWallSpecCheckBox";
+            this.downWallSpecCheckBox.Size = new System.Drawing.Size(62, 21);
+            this.downWallSpecCheckBox.TabIndex = 0;
+            this.downWallSpecCheckBox.Text = "Floor";
+            this.downWallSpecCheckBox.UseVisualStyleBackColor = true;
             // 
-            // sphereSpecularCB
+            // sphereSpecCheckBox
             // 
-            this.sphereSpecularCB.AutoSize = true;
-            this.sphereSpecularCB.Location = new System.Drawing.Point(8, 52);
-            this.sphereSpecularCB.Margin = new System.Windows.Forms.Padding(4);
-            this.sphereSpecularCB.Name = "sphereSpecularCB";
-            this.sphereSpecularCB.Size = new System.Drawing.Size(76, 21);
-            this.sphereSpecularCB.TabIndex = 2;
-            this.sphereSpecularCB.Text = "Sphere";
-            this.sphereSpecularCB.UseVisualStyleBackColor = true;
+            this.sphereSpecCheckBox.AutoSize = true;
+            this.sphereSpecCheckBox.Location = new System.Drawing.Point(8, 52);
+            this.sphereSpecCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.sphereSpecCheckBox.Name = "sphereSpecCheckBox";
+            this.sphereSpecCheckBox.Size = new System.Drawing.Size(76, 21);
+            this.sphereSpecCheckBox.TabIndex = 2;
+            this.sphereSpecCheckBox.Text = "Sphere";
+            this.sphereSpecCheckBox.UseVisualStyleBackColor = true;
             // 
-            // upWallSpecularCB
+            // upWallSpecCheckBox
             // 
-            this.upWallSpecularCB.AutoSize = true;
-            this.upWallSpecularCB.Location = new System.Drawing.Point(8, 194);
-            this.upWallSpecularCB.Margin = new System.Windows.Forms.Padding(4);
-            this.upWallSpecularCB.Name = "upWallSpecularCB";
-            this.upWallSpecularCB.Size = new System.Drawing.Size(72, 21);
-            this.upWallSpecularCB.TabIndex = 0;
-            this.upWallSpecularCB.Text = "Ceiling";
-            this.upWallSpecularCB.UseVisualStyleBackColor = true;
+            this.upWallSpecCheckBox.AutoSize = true;
+            this.upWallSpecCheckBox.Location = new System.Drawing.Point(8, 194);
+            this.upWallSpecCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.upWallSpecCheckBox.Name = "upWallSpecCheckBox";
+            this.upWallSpecCheckBox.Size = new System.Drawing.Size(72, 21);
+            this.upWallSpecCheckBox.TabIndex = 0;
+            this.upWallSpecCheckBox.Text = "Ceiling";
+            this.upWallSpecCheckBox.UseVisualStyleBackColor = true;
             // 
-            // rightWallSpecularCB
+            // rightWallSpecCheckBox
             // 
-            this.rightWallSpecularCB.AutoSize = true;
-            this.rightWallSpecularCB.Location = new System.Drawing.Point(8, 166);
-            this.rightWallSpecularCB.Margin = new System.Windows.Forms.Padding(4);
-            this.rightWallSpecularCB.Name = "rightWallSpecularCB";
-            this.rightWallSpecularCB.Size = new System.Drawing.Size(90, 21);
-            this.rightWallSpecularCB.TabIndex = 0;
-            this.rightWallSpecularCB.Text = "Right wall";
-            this.rightWallSpecularCB.UseVisualStyleBackColor = true;
+            this.rightWallSpecCheckBox.AutoSize = true;
+            this.rightWallSpecCheckBox.Location = new System.Drawing.Point(8, 166);
+            this.rightWallSpecCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.rightWallSpecCheckBox.Name = "rightWallSpecCheckBox";
+            this.rightWallSpecCheckBox.Size = new System.Drawing.Size(90, 21);
+            this.rightWallSpecCheckBox.TabIndex = 0;
+            this.rightWallSpecCheckBox.Text = "Right wall";
+            this.rightWallSpecCheckBox.UseVisualStyleBackColor = true;
             // 
-            // frontWallSpecularCB
+            // frontWallSpecCheckBox
             // 
-            this.frontWallSpecularCB.AutoSize = true;
-            this.frontWallSpecularCB.Location = new System.Drawing.Point(8, 81);
-            this.frontWallSpecularCB.Margin = new System.Windows.Forms.Padding(4);
-            this.frontWallSpecularCB.Name = "frontWallSpecularCB";
-            this.frontWallSpecularCB.Size = new System.Drawing.Size(90, 21);
-            this.frontWallSpecularCB.TabIndex = 0;
-            this.frontWallSpecularCB.Text = "Front wall";
-            this.frontWallSpecularCB.UseVisualStyleBackColor = true;
+            this.frontWallSpecCheckBox.AutoSize = true;
+            this.frontWallSpecCheckBox.Location = new System.Drawing.Point(8, 81);
+            this.frontWallSpecCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.frontWallSpecCheckBox.Name = "frontWallSpecCheckBox";
+            this.frontWallSpecCheckBox.Size = new System.Drawing.Size(90, 21);
+            this.frontWallSpecCheckBox.TabIndex = 0;
+            this.frontWallSpecCheckBox.Text = "Front wall";
+            this.frontWallSpecCheckBox.UseVisualStyleBackColor = true;
             // 
-            // leftWallSpecularCB
+            // leftWallSpecCheckBox
             // 
-            this.leftWallSpecularCB.AutoSize = true;
-            this.leftWallSpecularCB.Location = new System.Drawing.Point(8, 138);
-            this.leftWallSpecularCB.Margin = new System.Windows.Forms.Padding(4);
-            this.leftWallSpecularCB.Name = "leftWallSpecularCB";
-            this.leftWallSpecularCB.Size = new System.Drawing.Size(81, 21);
-            this.leftWallSpecularCB.TabIndex = 0;
-            this.leftWallSpecularCB.Text = "Left wall";
-            this.leftWallSpecularCB.UseVisualStyleBackColor = true;
+            this.leftWallSpecCheckBox.AutoSize = true;
+            this.leftWallSpecCheckBox.Location = new System.Drawing.Point(8, 138);
+            this.leftWallSpecCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.leftWallSpecCheckBox.Name = "leftWallSpecCheckBox";
+            this.leftWallSpecCheckBox.Size = new System.Drawing.Size(81, 21);
+            this.leftWallSpecCheckBox.TabIndex = 0;
+            this.leftWallSpecCheckBox.Text = "Left wall";
+            this.leftWallSpecCheckBox.UseVisualStyleBackColor = true;
             // 
-            // backWallSpecularCB
+            // backWallSpecCheckBox
             // 
-            this.backWallSpecularCB.AutoSize = true;
-            this.backWallSpecularCB.Location = new System.Drawing.Point(8, 109);
-            this.backWallSpecularCB.Margin = new System.Windows.Forms.Padding(4);
-            this.backWallSpecularCB.Name = "backWallSpecularCB";
-            this.backWallSpecularCB.Size = new System.Drawing.Size(88, 21);
-            this.backWallSpecularCB.TabIndex = 0;
-            this.backWallSpecularCB.Text = "Back wall";
-            this.backWallSpecularCB.UseVisualStyleBackColor = true;
+            this.backWallSpecCheckBox.AutoSize = true;
+            this.backWallSpecCheckBox.Location = new System.Drawing.Point(8, 109);
+            this.backWallSpecCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.backWallSpecCheckBox.Name = "backWallSpecCheckBox";
+            this.backWallSpecCheckBox.Size = new System.Drawing.Size(88, 21);
+            this.backWallSpecCheckBox.TabIndex = 0;
+            this.backWallSpecCheckBox.Text = "Back wall";
+            this.backWallSpecCheckBox.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.refractSphereCB);
-            this.groupBox2.Controls.Add(this.refractCubeCB);
+            this.groupBox2.Controls.Add(this.sphereRefCheckBox);
+            this.groupBox2.Controls.Add(this.cubeRefCheckBox);
             this.groupBox2.Location = new System.Drawing.Point(792, 18);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -193,27 +193,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transparancy";
             // 
-            // refractSphereCB
+            // sphereRefCheckBox
             // 
-            this.refractSphereCB.AutoSize = true;
-            this.refractSphereCB.Location = new System.Drawing.Point(8, 52);
-            this.refractSphereCB.Margin = new System.Windows.Forms.Padding(4);
-            this.refractSphereCB.Name = "refractSphereCB";
-            this.refractSphereCB.Size = new System.Drawing.Size(76, 21);
-            this.refractSphereCB.TabIndex = 2;
-            this.refractSphereCB.Text = "Sphere";
-            this.refractSphereCB.UseVisualStyleBackColor = true;
+            this.sphereRefCheckBox.AutoSize = true;
+            this.sphereRefCheckBox.Location = new System.Drawing.Point(8, 52);
+            this.sphereRefCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.sphereRefCheckBox.Name = "sphereRefCheckBox";
+            this.sphereRefCheckBox.Size = new System.Drawing.Size(76, 21);
+            this.sphereRefCheckBox.TabIndex = 2;
+            this.sphereRefCheckBox.Text = "Sphere";
+            this.sphereRefCheckBox.UseVisualStyleBackColor = true;
             // 
-            // refractCubeCB
+            // cubeRefCheckBox
             // 
-            this.refractCubeCB.AutoSize = true;
-            this.refractCubeCB.Location = new System.Drawing.Point(8, 23);
-            this.refractCubeCB.Margin = new System.Windows.Forms.Padding(4);
-            this.refractCubeCB.Name = "refractCubeCB";
-            this.refractCubeCB.Size = new System.Drawing.Size(63, 21);
-            this.refractCubeCB.TabIndex = 2;
-            this.refractCubeCB.Text = "Cube";
-            this.refractCubeCB.UseVisualStyleBackColor = true;
+            this.cubeRefCheckBox.AutoSize = true;
+            this.cubeRefCheckBox.Location = new System.Drawing.Point(8, 23);
+            this.cubeRefCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.cubeRefCheckBox.Name = "cubeRefCheckBox";
+            this.cubeRefCheckBox.Size = new System.Drawing.Size(63, 21);
+            this.cubeRefCheckBox.TabIndex = 2;
+            this.cubeRefCheckBox.Text = "Cube";
+            this.cubeRefCheckBox.UseVisualStyleBackColor = true;
             // 
             // twoLightsCB
             // 
@@ -246,6 +246,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
@@ -280,19 +281,19 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox cubeSpecularCB;
+        private System.Windows.Forms.CheckBox cubeSpecCheckBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox sphereSpecularCB;
+        private System.Windows.Forms.CheckBox sphereSpecCheckBox;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox refractSphereCB;
-        private System.Windows.Forms.CheckBox refractCubeCB;
+        private System.Windows.Forms.CheckBox sphereRefCheckBox;
+        private System.Windows.Forms.CheckBox cubeRefCheckBox;
         private System.Windows.Forms.CheckBox twoLightsCB;
-        private System.Windows.Forms.CheckBox frontWallSpecularCB;
-        private System.Windows.Forms.CheckBox rightWallSpecularCB;
-        private System.Windows.Forms.CheckBox leftWallSpecularCB;
-        private System.Windows.Forms.CheckBox backWallSpecularCB;
-        private System.Windows.Forms.CheckBox downWallSpecularCB;
-        private System.Windows.Forms.CheckBox upWallSpecularCB;
+        private System.Windows.Forms.CheckBox frontWallSpecCheckBox;
+        private System.Windows.Forms.CheckBox rightWallSpecCheckBox;
+        private System.Windows.Forms.CheckBox leftWallSpecCheckBox;
+        private System.Windows.Forms.CheckBox backWallSpecCheckBox;
+        private System.Windows.Forms.CheckBox downWallSpecCheckBox;
+        private System.Windows.Forms.CheckBox upWallSpecCheckBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
     }

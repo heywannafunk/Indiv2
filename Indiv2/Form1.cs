@@ -14,8 +14,8 @@ namespace Indiv2
     {
         public List<Figure> scene = new List<Figure>();
         public List<Lighting> lights = new List<Lighting>();   // список источников света
-        public Color[,] color_pixels;                    // цвета пикселей для отображения на pictureBox
-        public Point3D[,] pixels;
+        public Color[,] pixColors;                    // цвета пикселей для отображения на pictureBox
+        public Point3D[,] pixs;
         public Point3D focus;
         public Point3D up_left, up_right, down_left, down_right;
         public int h, w;
@@ -53,81 +53,129 @@ namespace Indiv2
             room.setPen(new Pen(Color.White));
             room.isRoom = true;
 
-            float refl, 
-                refr, 
-                amb, 
-                dif, 
+            float refl,
+                refr,
+                amb,
+                dif,
                 env;
-            room.sides[0].drawing_pen = new Pen(Color.Yellow);
+            room.sides[0].color = new Pen(Color.White);
 
             //front wall settings
-            room.sides[1].drawing_pen = new Pen(Color.Green);
-            if (frontWallSpecularCB.Checked)
+            room.sides[1].color = new Pen(Color.White);
+            if (frontWallSpecCheckBox.Checked)
             {
-                refl = 0.8f; refr = 0f; amb = 0.0f; dif = 0.0f; env = 1f;
+                refl = 0.8f;
+                refr = 0f;
+                amb = 0.0f;
+                dif = 0.0f;
+                env = 1f;
             }
             else
             {
-                refl = 0.0f; refr = 0f; amb = 0.1f; dif = 0.8f; env = 1f;
+                refl = 0.0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.8f;
+                env = 1f;
             }
             room.front_wall_material = new Material(refl, refr, amb, dif, env);
 
             //
-            if (backWallSpecularCB.Checked)
+            if (backWallSpecCheckBox.Checked)
             {
-                refl = 0.8f; refr = 0f; amb = 0.0f; dif = 0.0f; env = 1f;
+                refl = 0.8f;
+                refr = 0f;
+                amb = 0.0f;
+                dif = 0.0f;
+                env = 1f;
             }
             else
             {
-                refl = 0.0f; refr = 0f; amb = 0.1f; dif = 0.8f; env = 1f;
+                refl = 0.0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.8f;
+                env = 1f;
             }
             room.back_wall_material = new Material(refl, refr, amb, dif, env);
 
             //
-            room.sides[2].drawing_pen = new Pen(Color.Red);
-            if (rightWallSpecularCB.Checked)
+            room.sides[2].color = new Pen(Color.Blue);
+            if (rightWallSpecCheckBox.Checked)
             {
-                refl = 0.8f; refr = 0f; amb = 0.0f; dif = 0.0f; env = 1f;
+                refl = 0.8f;
+                refr = 0f;
+                amb = 0.0f;
+                dif = 0.0f;
+                env = 1f;
             }
             else
             {
-                refl = 0.0f; refr = 0f; amb = 0.1f; dif = 0.8f; env = 1f;
+                refl = 0.0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.8f;
+                env = 1f;
             }
             room.right_wall_material = new Material(refl, refr, amb, dif, env);
 
             //
-            room.sides[3].drawing_pen = new Pen(Color.Blue);
-            if (leftWallSpecularCB.Checked)
+            room.sides[3].color = new Pen(Color.Red);
+            if (leftWallSpecCheckBox.Checked)
             {
-                refl = 0.8f; refr = 0f; amb = 0.0f; dif = 0.0f; env = 1f;
+                refl = 0.8f;
+                refr = 0f;
+                amb = 0.0f;
+                dif = 0.0f;
+                env = 1f;
             }
             else
             {
-                refl = 0.0f; refr = 0f; amb = 0.1f; dif = 0.8f; env = 1f;
+                refl = 0.0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.8f;
+                env = 1f;
             }
             room.left_wall_material = new Material(refl, refr, amb, dif, env);
 
             //
-            room.sides[4].drawing_pen = new Pen(Color.Brown);
-            if (upWallSpecularCB.Checked)
+            room.sides[4].color = new Pen(Color.White);
+            if (upWallSpecCheckBox.Checked)
             {
-                refl = 0.8f; refr = 0f; amb = 0.0f; dif = 0.0f; env = 1f;
+                refl = 0.8f;
+                refr = 0f;
+                amb = 0.0f;
+                dif = 0.0f;
+                env = 1f;
             }
             else
             {
-                refl = 0.0f; refr = 0f; amb = 0.1f; dif = 0.8f; env = 1f;
+                refl = 0.0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.8f;
+                env = 1f;
             }
             room.up_wall_material = new Material(refl, refr, amb, dif, env);
 
             //
-            room.sides[5].drawing_pen = new Pen(Color.Beige);
-            if (downWallSpecularCB.Checked)
+            room.sides[5].color = new Pen(Color.White);
+            if (downWallSpecCheckBox.Checked)
             {
-                refl = 0.8f; refr = 0f; amb = 0.0f; dif = 0.0f; env = 1f;
+                refl = 0.8f;
+                refr = 0f;
+                amb = 0.0f;
+                dif = 0.0f;
+                env = 1f;
             }
             else
             {
-                refl = 0.0f; refr = 0f; amb = 0.1f; dif = 0.8f; env = 1f;
+                refl = 0.0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.8f;
+                env = 1f;
             }
             room.down_wall_material = new Material(refl, refr, amb, dif, env);
 
@@ -153,13 +201,21 @@ namespace Indiv2
             cube1.Shift(-2.5f, 0.0f, 2.5f);
             cube1.setPen(new Pen(Color.DarkGray));
 
-            if (refractCubeCB.Checked)
+            if (cubeRefCheckBox.Checked)
             {
-                refl = 0.0f; refr = 0.8f; amb = 0f; dif = 0.0f; env = 1.03f;
+                refl = 0.0f;
+                refr = 0.8f;
+                amb = 0f;
+                dif = 0.0f;
+                env = 1.03f;
             }
             else
             {
-                refl = 0f; refr = 0f; amb = 0.1f; dif = 0.7f; env = 1f;
+                refl = 0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.7f;
+                env = 1f;
             }
             cube1.figure_material = new Material(refl, refr, amb, dif, env);
 
@@ -167,13 +223,21 @@ namespace Indiv2
             cube2.Shift(-2.5f, 0.0f, -2.5f);
             cube2.setPen(new Pen(Color.White));
 
-            if (cubeSpecularCB.Checked)
+            if (cubeSpecCheckBox.Checked)
             {
-                refl = 0.9f; refr = 0f; amb = 0f; dif = 0.1f; env = 1f;
+                refl = 0.9f;
+                refr = 0f;
+                amb = 0f;
+                dif = 0.1f;
+                env = 1f;
             }
             else
             {
-                refl = 0.0f; refr = 0f; amb = 0.1f; dif = 0.8f; env = 1f;
+                refl = 0.0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.8f;
+                env = 1f;
             }
             cube2.figure_material = new Material(refl, refr, amb, dif, env);
 
@@ -183,15 +247,23 @@ namespace Indiv2
             //Setting up spheres
             //
             Sphere sphere1 = new Sphere(new Point3D(2.5f, 0.0f, 2.5f), 2f);
-            
+
             sphere1.setPen(new Pen(Color.White));
-            if (sphereSpecularCB.Checked)
+            if (sphereSpecCheckBox.Checked)
             {
-                refl = 0.9f; refr = 0f; amb = 0f; dif = 0.1f; env = 1f;
+                refl = 0.9f;
+                refr = 0f;
+                amb = 0f;
+                dif = 0.1f;
+                env = 1f;
             }
             else
             {
-                refl = 0.0f; refr = 0f; amb = 0.1f; dif = 0.8f; env = 1f;
+                refl = 0.0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.8f;
+                env = 1f;
             }
             sphere1.figure_material = new Material(refl, refr, amb, dif, env);
 
@@ -199,13 +271,21 @@ namespace Indiv2
             Sphere sphere2 = new Sphere(new Point3D(2.5f, 0.0f, -2.5f), 2f);
 
             sphere2.setPen(new Pen(Color.DarkGray));
-            if (refractSphereCB.Checked)
+            if (sphereRefCheckBox.Checked)
             {
-                refl = 0.0f; refr = 0.8f; amb = 0f; dif = 0.0f; env = 1.03f;
+                refl = 0.0f;
+                refr = 0.8f;
+                amb = 0f;
+                dif = 0.0f;
+                env = 1.03f;
             }
             else
             {
-                refl = 0f; refr = 0f; amb = 0.1f; dif = 0.7f; env = 1f;
+                refl = 0f;
+                refr = 0f;
+                amb = 0.1f;
+                dif = 0.7f;
+                env = 1f;
             }
             sphere2.figure_material = new Material(refl, refr, amb, dif, env);
 
@@ -223,11 +303,14 @@ namespace Indiv2
         {
             Clear();
             buildScene();
-            run_rayTrace();
-            for (int i = 0; i < w; ++i)
+            applyRayTracing();
+
+            for (int x = 0; x < w; ++x)
             {
-                for (int j = 0; j < h; ++j)
-                    (pictureBox1.Image as Bitmap).SetPixel(i, j, color_pixels[i, j]);
+                for (int y = 0; y < h; ++y)
+                {
+                    (pictureBox1.Image as Bitmap).SetPixel(x, y, pixColors[x, y]);
+                }
             }
             pictureBox1.Invalidate();
         }
@@ -237,39 +320,42 @@ namespace Indiv2
             Clear();
         }
 
-        public void run_rayTrace()
+        public void applyRayTracing()
         {
-            get_pixels();
-            for(int i = 0; i < w; ++i)
-                 for(int j = 0; j < h; ++j)
+            rasterScene();
+
+            for (int i = 0; i < w; ++i)
+            {
+                for (int j = 0; j < h; ++j)
                 {
-                    Ray r = new Ray(focus, pixels[i, j]);
-                    r.start = new Point3D(pixels[i, j]);
-                    Point3D clr = RayTrace(r, 10, 1);
-                    if (clr.x > 1.0f || clr.y > 1.0f || clr.z > 1.0f)
-                        clr = Point3D.norm(clr);
-                    color_pixels[i, j] = Color.FromArgb((int)(255 * clr.x), (int)(255 * clr.y), (int)(255 * clr.z));
+                    Ray r = new Ray(focus, pixs[i, j]);
+                    r.start = new Point3D(pixs[i, j]);
+                    Point3D pixColor = RayTracing(r, 10, 1);
+                    if (pixColor.x > 1.0f || pixColor.y > 1.0f || pixColor.z > 1.0f)
+                        pixColor = Point3D.Normal(pixColor);
+                    pixColors[i, j] = Color.FromArgb((int)(255 * pixColor.x), (int)(255 * pixColor.y), (int)(255 * pixColor.z));
                 }
+            }
         }
 
         // получение всех пикселей сцены
-        public void get_pixels()
+        public void rasterScene()
         {
-            pixels = new Point3D[w, h];
-            color_pixels = new Color[w, h];
+            pixs = new Point3D[w, h];
+            pixColors = new Color[w, h];
             Point3D step_up = (up_right - up_left) / (w - 1);
             Point3D step_down = (down_right - down_left) / (w - 1);
 
             Point3D up = new Point3D(up_left);
             Point3D down = new Point3D(down_left);
 
-            for (int i = 0; i < w; ++i)
+            for (int x = 0; x < w; x++)
             {
                 Point3D step_y = (up - down) / (h - 1);
                 Point3D d = new Point3D(down);
-                for (int j = 0; j < h; ++j)
+                for (int y = 0; y < h; y++)
                 {
-                    pixels[i, j] = d;
+                    pixs[x, y] = d;
                     d += step_y;
                 }
                 up += step_up;
@@ -283,79 +369,85 @@ namespace Indiv2
             float max_t = (light_point - hit_point).length();     // позиция источника света на луче
             Ray r = new Ray(hit_point, light_point);
 
-            foreach(Figure fig in scene)
-                if (fig.figure_intersection(r, out float t, out Point3D n))
+            foreach (Figure fig in scene)
+                if (fig.figureIntersect(r, out float t, out Point3D n))
                     if (t < max_t && t > Figure.EPS)
                         return false;
-             return true;
+            return true;
         }
 
-        public Point3D RayTrace(Ray r, int iter, float env)
+        //отслеживаем луч
+        public Point3D RayTracing(Ray r, int iter, float env)
         {
+            float t = 0;
+            Point3D normal = null;
+            Material m = new Material();
+            Point3D resColor = new Point3D(0, 0, 0);
+            bool refrAway = false;
+
             if (iter <= 0)
                 return new Point3D(0, 0, 0);
 
-            float t = 0;        // позиция точки пересечения луча с фигурой на луче
-            Point3D normal = null;
-            Material m = new Material();
-            Point3D res_color = new Point3D(0, 0, 0);
-            bool refract_out_of_figure = false; //  луч преломления выходит из объекта?
-
-            foreach(Figure fig in scene)
+            foreach (Figure f in scene)
             {
-                if (fig.figure_intersection(r, out float intersect, out Point3D n))
-                    if(intersect < t || t == 0)     // нужна ближайшая фигура к точке наблюдения
+                if (f.figureIntersect(r, out float intersect, out Point3D n))
+                    if (intersect < t || t == 0)
                     {
                         t = intersect;
                         normal = n;
-                        m = new Material(fig.figure_material);
+                        m = new Material(f.figure_material);
                     }
             }
 
             if (t == 0)
                 return new Point3D(0, 0, 0);
-            //если угол между нормалью к поверхности объекта и направлением луча положительный, => угол острый, => луч выходит из объекта в среду
-            if (Point3D.scalar(r.direction, normal) > 0) 
+
+            if (Point3D.scAngle(r.direction, normal) > 0)
             {
-                normal *= -1; 
-                refract_out_of_figure = true;
+                normal *= -1;
+                refrAway = true;
             }
 
-            Point3D hit_point = r.start + r.direction * t;
+            Point3D hitP = r.start + r.direction * t;
 
-            foreach(Lighting l in lights)
+            //просчёт эмбиента и дифф освещения
+            foreach (Lighting l in lights)
             {
-                Point3D amb = l.color_light * m.ambient;
+                Point3D amb = l.colorLight * m.ambient;
                 amb.x = (amb.x * m.color.x);
                 amb.y = (amb.y * m.color.y);
                 amb.z = (amb.z * m.color.z);
-                res_color += amb;
+                resColor += amb;
 
-                // диффузное освещение
-                if (is_visible(l.point_light, hit_point))
-                    res_color += l.shade(hit_point, normal, m.color, m.diffuse);
+                if (is_visible(l.pointLight, hitP))
+                    resColor += l.shade(hitP, normal, m.color, m.diffuse);
             }
 
-            if(m.reflection > 0)
+            if (m.reflection > 0)
             {
-                Ray reflected_ray = r.reflect(hit_point, normal);
-                res_color += m.reflection * RayTrace(reflected_ray, iter - 1, env);
+                Ray reflectedRay = r.reflect(hitP, normal);
+                resColor += m.reflection * RayTracing(reflectedRay, iter - 1, env);
             }
 
-            if(m.refraction > 0)
+            if (m.refraction > 0)
             {
-                float eta;                 //коэффициент преломления
-                if (refract_out_of_figure) //луч выходит в среду
-                    eta = m.environment;   
+                float refrCoef;//коэффициент преломления
+
+                if (refrAway)
+                {
+                    refrCoef = m.environment;
+                }
                 else
-                    eta = 1 / m.environment;
+                {
+                    refrCoef = 1 / m.environment;
+                }
 
-                Ray refracted_ray = r.refract(hit_point, normal, eta);
-                if(refracted_ray != null)
-                    res_color += m.refraction * RayTrace(refracted_ray, iter - 1, m.environment);
+                Ray refractedRay = r.refract(hitP, normal, refrCoef);
+                if (refractedRay != null)
+                    resColor += m.refraction * RayTracing(refractedRay, iter - 1, m.environment);
             }
 
-            return res_color;
+            return resColor;
         }
     }
 }

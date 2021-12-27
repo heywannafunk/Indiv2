@@ -11,7 +11,7 @@ namespace Indiv2
     {
         public Figure owner = null;
         public List<int> points = new List<int>();
-        public Pen drawing_pen = new Pen(Color.Black);
+        public Pen color = new Pen(Color.Black);
         public Point3D Normal;
 
         public Face(Figure h = null)
@@ -22,7 +22,7 @@ namespace Indiv2
         {
             points = new List<int>(s.points);
             owner = s.owner;
-            drawing_pen = s.drawing_pen.Clone() as Pen;
+            color = s.color.Clone() as Pen;
             Normal = new Point3D(s.Normal);
         }
         public Point3D getPoint(int ind)
@@ -36,10 +36,11 @@ namespace Indiv2
         {
             if (S.points.Count() < 3)
                 return new Point3D(0, 0, 0);
+
             Point3D U = S.getPoint(1) - S.getPoint(0);
             Point3D V = S.getPoint(S.points.Count - 1) - S.getPoint(0);
             Point3D normal = U * V;
-            return Point3D.norm(normal);
+            return Point3D.Normal(normal);
         }
     }
 
@@ -79,25 +80,25 @@ namespace Indiv2
             Point3D edge1 = p1 - p0;
             Point3D edge2 = p2 - p0;
             Point3D h = r.direction * edge2;
-            float a = Point3D.scalar(edge1, h);
+            float a = Point3D.scAngle(edge1, h);
 
             if (a > -EPS && a < EPS)
-                return false;       // This ray is parallel to this triangle.
+                return false;// This ray is parallel to this triangle.
 
             float f = 1.0f / a;
             Point3D s = r.start - p0;
-            float u = f * Point3D.scalar(s, h);
+            float u = f * Point3D.scAngle(s, h);
 
             if (u < 0 || u > 1)
                 return false;
 
             Point3D q = s * edge1;
-            float v = f * Point3D.scalar(r.direction, q);
+            float v = f * Point3D.scAngle(r.direction, q);
 
             if (v < 0 || u + v > 1)
                 return false;
             // At this stage we can compute t to find out where the intersection point is on the line.
-            float t = f * Point3D.scalar(edge2, q);
+            float t = f * Point3D.scAngle(edge2, q);
             if (t > EPS)
             {
                 intersect = t;
@@ -108,7 +109,7 @@ namespace Indiv2
         }
 
         // пересечение луча с фигурой
-        public virtual bool figure_intersection(Ray r, out float intersect, out Point3D normal)
+        public virtual bool figureIntersect(Ray r, out float intersect, out Point3D normal)
         {
             intersect = 0;
             normal = null;
@@ -170,17 +171,13 @@ namespace Indiv2
                         default:
                             break;
                     }
-                figure_material.color = new Point3D(sd.drawing_pen.Color.R / 255f, sd.drawing_pen.Color.G / 255f, sd.drawing_pen.Color.B / 255f);
+                figure_material.color = new Point3D(sd.color.Color.R / 255f, sd.color.Color.G / 255f, sd.color.Color.B / 255f);
                 return true;
             }
             return false;
         }
 
-
-        ///
-        /// ----------------------------- TRANSFORMS SUPPORT METHODS --------------------------------
-        ///
-
+        //transformations
         public float[,] GetMatrix()
         {
             var res = new float[points.Count, 4];
@@ -220,10 +217,6 @@ namespace Indiv2
             return res;
         }
 
-        ///
-        /// ----------------------------- APHINE TRANSFORMS METHODS --------------------------------
-        ///
-
         public void Spin(float rangle, string type)
         {
             float[,] mt = GetMatrix();
@@ -256,7 +249,7 @@ namespace Indiv2
             Spin(angle * (float)Math.PI / 180, type);
         }
 
-        public void scale_axis(float xs, float ys, float zs)
+        public void scaleAxis(float xs, float ys, float zs)
         {
             float[,] pnts = GetMatrix();
             pnts = Scale(pnts, xs, ys, zs);
@@ -271,17 +264,7 @@ namespace Indiv2
         public virtual void setPen(Pen dw)
         {
             foreach (Face s in sides)
-                s.drawing_pen = dw;
-        }
-
-        public void scale_around_center(float xs, float ys, float zs)
-        {
-            float[,] pnts = GetMatrix();
-            Point3D p = Center();
-            pnts = Shift(pnts, -p.x, -p.y, -p.z);
-            pnts = Scale(pnts, xs, ys, zs);
-            pnts = Shift(pnts, p.x, p.y, p.z);
-            Matrix(pnts);
+                s.color = dw;
         }
 
         private static float[,] multiply_matrix(float[,] m1, float[,] m2)
@@ -396,7 +379,7 @@ namespace Indiv2
     {
         float radius;
 
-        public Pen drawing_pen = new Pen(Color.Black);
+        public Pen color = new Pen(Color.Black);
 
         public Sphere(Point3D p, float r)
         {
@@ -404,11 +387,11 @@ namespace Indiv2
             radius = r;
         }
 
-        public static bool ray_sphere_intersection(Ray r, Point3D sphere_pos, float sphere_rad, out float t)
+        public static bool sphereRayIntersection(Ray r, Point3D sphere_pos, float sphere_rad, out float t)
         {
             Point3D k = r.start - sphere_pos;
-            float b = Point3D.scalar(k, r.direction);
-            float c = Point3D.scalar(k, k) - sphere_rad * sphere_rad;
+            float b = Point3D.scAngle(k, r.direction);
+            float c = Point3D.scAngle(k, k) - sphere_rad * sphere_rad;
             float d = b * b - c;
             t = 0;
 
@@ -429,20 +412,20 @@ namespace Indiv2
 
         public override void setPen(Pen dw)
         {
-            drawing_pen = dw;
+            color = dw;
 
         }
 
-        public override bool figure_intersection(Ray r, out float t, out Point3D normal)
+        public override bool figureIntersect(Ray r, out float t, out Point3D normal)
         {
             t = 0;
             normal = null;
 
-            if (ray_sphere_intersection(r, points[0], radius, out t) && (t > EPS))
+            if (sphereRayIntersection(r, points[0], radius, out t) && (t > EPS))
             {
                 normal = (r.start + r.direction * t) - points[0];
-                normal = Point3D.norm(normal);
-                figure_material.color = new Point3D(drawing_pen.Color.R / 255f, drawing_pen.Color.G / 255f, drawing_pen.Color.B / 255f);
+                normal = Point3D.Normal(normal);
+                figure_material.color = new Point3D(color.Color.R / 255f, color.Color.G / 255f, color.Color.B / 255f);
                 return true;
             }
             return false;
