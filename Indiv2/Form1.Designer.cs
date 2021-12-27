@@ -42,9 +42,11 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.sphereRefCheckBox = new System.Windows.Forms.CheckBox();
             this.cubeRefCheckBox = new System.Windows.Forms.CheckBox();
-            this.twoLightsCB = new System.Windows.Forms.CheckBox();
+            this.floorLCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.leftLCheckBox = new System.Windows.Forms.CheckBox();
+            this.rightLCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -215,23 +217,25 @@
             this.cubeRefCheckBox.Text = "Cube";
             this.cubeRefCheckBox.UseVisualStyleBackColor = true;
             // 
-            // twoLightsCB
+            // floorLCheckBox
             // 
-            this.twoLightsCB.AutoSize = true;
-            this.twoLightsCB.Location = new System.Drawing.Point(7, 28);
-            this.twoLightsCB.Margin = new System.Windows.Forms.Padding(4);
-            this.twoLightsCB.Name = "twoLightsCB";
-            this.twoLightsCB.Size = new System.Drawing.Size(93, 21);
-            this.twoLightsCB.TabIndex = 4;
-            this.twoLightsCB.Text = "Second pl";
-            this.twoLightsCB.UseVisualStyleBackColor = true;
+            this.floorLCheckBox.AutoSize = true;
+            this.floorLCheckBox.Location = new System.Drawing.Point(7, 28);
+            this.floorLCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.floorLCheckBox.Name = "floorLCheckBox";
+            this.floorLCheckBox.Size = new System.Drawing.Size(62, 21);
+            this.floorLCheckBox.TabIndex = 4;
+            this.floorLCheckBox.Text = "Floor";
+            this.floorLCheckBox.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.twoLightsCB);
+            this.groupBox3.Controls.Add(this.rightLCheckBox);
+            this.groupBox3.Controls.Add(this.leftLCheckBox);
+            this.groupBox3.Controls.Add(this.floorLCheckBox);
             this.groupBox3.Location = new System.Drawing.Point(792, 123);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(125, 61);
+            this.groupBox3.Size = new System.Drawing.Size(125, 109);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lighting";
@@ -248,6 +252,28 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // leftLCheckBox
+            // 
+            this.leftLCheckBox.AutoSize = true;
+            this.leftLCheckBox.Location = new System.Drawing.Point(7, 56);
+            this.leftLCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.leftLCheckBox.Name = "leftLCheckBox";
+            this.leftLCheckBox.Size = new System.Drawing.Size(81, 21);
+            this.leftLCheckBox.TabIndex = 5;
+            this.leftLCheckBox.Text = "Left wall";
+            this.leftLCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // rightLCheckBox
+            // 
+            this.rightLCheckBox.AutoSize = true;
+            this.rightLCheckBox.Location = new System.Drawing.Point(7, 84);
+            this.rightLCheckBox.Margin = new System.Windows.Forms.Padding(4);
+            this.rightLCheckBox.Name = "rightLCheckBox";
+            this.rightLCheckBox.Size = new System.Drawing.Size(90, 21);
+            this.rightLCheckBox.TabIndex = 6;
+            this.rightLCheckBox.Text = "Right wall";
+            this.rightLCheckBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -287,7 +313,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox sphereRefCheckBox;
         private System.Windows.Forms.CheckBox cubeRefCheckBox;
-        private System.Windows.Forms.CheckBox twoLightsCB;
+        private System.Windows.Forms.CheckBox floorLCheckBox;
         private System.Windows.Forms.CheckBox frontWallSpecCheckBox;
         private System.Windows.Forms.CheckBox rightWallSpecCheckBox;
         private System.Windows.Forms.CheckBox leftWallSpecCheckBox;
@@ -296,6 +322,8 @@
         private System.Windows.Forms.CheckBox upWallSpecCheckBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox rightLCheckBox;
+        private System.Windows.Forms.CheckBox leftLCheckBox;
     }
 }
 

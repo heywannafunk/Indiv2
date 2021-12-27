@@ -13,21 +13,22 @@ namespace Indiv2
     public partial class Form1 : Form
     {
         public List<Figure> scene = new List<Figure>();
-        public List<Lighting> lights = new List<Lighting>();   // список источников света
-        public Color[,] pixColors;                    // цвета пикселей для отображения на pictureBox
+        public List<Lighting> lights = new List<Lighting>();
+        public Color[,] pixColors;
         public Point3D[,] pixs;
         public Point3D focus;
-        public Point3D up_left, up_right, down_left, down_right;
+
+        public Point3D upperLeft, upperRight, lowerLeft, lowerRight;
         public int h, w;
 
         public Form1()
         {
             InitializeComponent();
             focus = new Point3D();
-            up_left = new Point3D();
-            up_right = new Point3D();
-            down_left = new Point3D();
-            down_right = new Point3D();
+            upperLeft = new Point3D();
+            upperRight = new Point3D();
+            lowerLeft = new Point3D();
+            lowerRight = new Point3D();
 
             h = pictureBox1.Height;
             w = pictureBox1.Width;
@@ -39,15 +40,15 @@ namespace Indiv2
             //
             //Setting up room
             //
-            Figure room = Figure.createHexahedron(10);
+            Figure room = Figure.createHexahedron(12);
 
-            up_left = room.sides[0].getPoint(0);
-            up_right = room.sides[0].getPoint(1);
-            down_right = room.sides[0].getPoint(2);
-            down_left = room.sides[0].getPoint(3);
+            upperLeft = room.sides[0].getPoint(0);
+            upperRight = room.sides[0].getPoint(1);
+            lowerRight = room.sides[0].getPoint(2);
+            lowerLeft = room.sides[0].getPoint(3);
 
             Point3D normal = Face.getNormal(room.sides[0]);
-            Point3D center = (up_left + up_right + down_left + down_right) / 4;
+            Point3D center = (upperLeft + upperRight + lowerLeft + lowerRight) / 4;
             focus = center + normal * 10;
 
             room.setPen(new Pen(Color.White));
@@ -185,14 +186,23 @@ namespace Indiv2
             //
             //Setting up light
             //
-            Lighting l1 = new Lighting(new Point3D(0f, 1f, 4.9f), new Point3D(1f, 1f, 1f));
-            lights.Add(l1);
-            if (twoLightsCB.Checked)
+            Lighting bulb1 = new Lighting(new Point3D(0f, 1f, 5f), new Point3D(1f, 1f, 1f));
+            lights.Add(bulb1);
+            if (floorLCheckBox.Checked)
             {
-                Lighting l2 = new Lighting(new Point3D(0f, 4f, -4.9f), new Point3D(1f, 1f, 1f));
-                lights.Add(l2);
+                Lighting bulb2 = new Lighting(new Point3D(0f, 1f, -5f), new Point3D(1f, 1f, 1f));
+                lights.Add(bulb2);
             }
-
+            if (leftLCheckBox.Checked)
+            {
+                Lighting bulb3 = new Lighting(new Point3D(5f, 1f, 0.0f), new Point3D(1f, 1f, 1f));
+                lights.Add(bulb3);
+            }
+            if (rightLCheckBox.Checked)
+            {
+                Lighting bulb4 = new Lighting(new Point3D(-5f, 1f, 0.0f), new Point3D(1f, 1f, 1f));
+                lights.Add(bulb4);
+            }
 
             //
             //Setting up cubes
@@ -343,11 +353,11 @@ namespace Indiv2
         {
             pixs = new Point3D[w, h];
             pixColors = new Color[w, h];
-            Point3D step_up = (up_right - up_left) / (w - 1);
-            Point3D step_down = (down_right - down_left) / (w - 1);
+            Point3D step_up = (upperRight - upperLeft) / (w - 1);
+            Point3D step_down = (lowerRight - lowerLeft) / (w - 1);
 
-            Point3D up = new Point3D(up_left);
-            Point3D down = new Point3D(down_left);
+            Point3D up = new Point3D(upperLeft);
+            Point3D down = new Point3D(lowerLeft);
 
             for (int x = 0; x < w; x++)
             {
@@ -377,7 +387,7 @@ namespace Indiv2
         }
 
         //отслеживаем луч
-        public Point3D RayTracing(Ray r, int iter, float env)
+        public Point3D RayTracing(Ray r, int depth, float env)
         {
             float t = 0;
             Point3D normal = null;
@@ -385,7 +395,7 @@ namespace Indiv2
             Point3D resColor = new Point3D(0, 0, 0);
             bool refrAway = false;
 
-            if (iter <= 0)
+            if (depth <= 0)
                 return new Point3D(0, 0, 0);
 
             foreach (Figure f in scene)
@@ -426,7 +436,7 @@ namespace Indiv2
             if (m.reflection > 0)
             {
                 Ray reflectedRay = r.reflect(hitP, normal);
-                resColor += m.reflection * RayTracing(reflectedRay, iter - 1, env);
+                resColor += m.reflection * RayTracing(reflectedRay, depth - 1, env);
             }
 
             if (m.refraction > 0)
@@ -444,7 +454,7 @@ namespace Indiv2
 
                 Ray refractedRay = r.refract(hitP, normal, refrCoef);
                 if (refractedRay != null)
-                    resColor += m.refraction * RayTracing(refractedRay, iter - 1, m.environment);
+                    resColor += m.refraction * RayTracing(refractedRay, depth - 1, m.environment);
             }
 
             return resColor;
