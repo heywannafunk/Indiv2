@@ -1,0 +1,9 @@
+C:\Users\Racer\source\repos\Indiv2\Indiv2\bin\Debug\Indiv2.exe.config
+C:\Users\Racer\source\repos\Indiv2\Indiv2\bin\Debug\Indiv2.exe
+C:\Users\Racer\source\repos\Indiv2\Indiv2\bin\Debug\Indiv2.pdb
+C:\Users\Racer\source\repos\Indiv2\Indiv2\obj\Debug\Indiv2.csprojAssemblyReference.cache
+C:\Users\Racer\source\repos\Indiv2\Indiv2\obj\Debug\Indiv2.Properties.Resources.resources
+C:\Users\Racer\source\repos\Indiv2\Indiv2\obj\Debug\Indiv2.csproj.GenerateResource.cache
+C:\Users\Racer\source\repos\Indiv2\Indiv2\obj\Debug\Indiv2.exe
+C:\Users\Racer\source\repos\Indiv2\Indiv2\obj\Debug\Indiv2.pdb
+C:\Users\Racer\source\repos\Indiv2\Indiv2\obj\Debug\Indiv2.Form1.resources
